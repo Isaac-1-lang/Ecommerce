@@ -17,6 +17,7 @@ import Register from "./components/Register";
 import MyOrders from "./pages/MyOrders";
 import Checkout from "./pages/Checkout";
 import Dashboard from "./pages/admin/Dashboard";
+import Favourite from "./components/Favourite";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -27,6 +28,13 @@ function App() {
   const hideFooterPaths = ["/login","/register", "/admin/dashboard"];
 
   const showFooter = !hideFooterPaths.includes(location.pathname);
+  const products = [
+    { id:1, name:"Carrot"},
+    {id:2, name:'Bell Pepper'},
+    {id:3, name:"Orange Juice"},
+    {id:4,name:'EggPlants'},
+    {id:5,name:"Potatoes"},
+  ]
 
   return (
     <AppContextProvider>
@@ -48,6 +56,7 @@ function App() {
             <Route path="/my-orders" element={<MyOrders />} />
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/admin/dashboard" element={<Dashboard />} />
+            <Route path="/favourite" element={<Favourite/>} />
           </Routes>
         </div>
         {showFooter && <Footer />}

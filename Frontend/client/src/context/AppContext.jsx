@@ -146,6 +146,17 @@ export const AppContextProvider = ({ children }) => {
       return cartData;
     });
   }, []);
+  const handleToggleFavourite = useCallback((itemId) => {
+    if(!itemId) {
+      toast.error("Invalid item ID");
+      return;
+    }
+    setCartItems((prevCartItems)=> {
+      const cartData = structuredClone(prevCartItems);
+      cartData[itemId] = (cartData[itemId] || 0) + 1;
+      toast.success("Added to favourites");
+    })
+  })
 
   // Update cart item quantity with validation
   const updateCartItems = useCallback((itemId, quantity) => {
@@ -186,6 +197,7 @@ export const AppContextProvider = ({ children }) => {
       return prevCartItems;
     });
   }, []);
+
 
   // Memoize the context value to prevent unnecessary re-renders
   const value = useMemo(

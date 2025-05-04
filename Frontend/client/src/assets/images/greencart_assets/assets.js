@@ -69,6 +69,8 @@ import vanilla_muffins_image from "./vanilla_muffins_image.png";
 import quinoa_image from "./quinoa_image.png";
 import brown_rice_image from "./brown_rice_image.png";
 import barley_image from "./barley_image.png";
+import favourite_icon from "../../favourite_icon.png";
+import heart from '../../heart.png';
 
 export const assets = {
   logo,
@@ -98,6 +100,8 @@ export const assets = {
   bottom_banner_image_sm,
   add_address_iamge,
   box_icon,
+  favourite_icon,
+  heart
 };
 
 export const categories = [
@@ -142,6 +146,21 @@ export const categories = [
     path: "Grains",
     image: grain_image,
     bgColor: "#F1E3F9",
+  },
+];
+export const dummyAddress = [
+  {
+    _id: "67b5b9e54ea97f71bbc196a0",
+    userId: "67b5880e4d09769c5ca61644",
+    firstName: "Great",
+    lastName: "Stack",
+    email: "user.greatstack@gmail.com",
+    street: "Street 123",
+    city: "Main City",
+    state: "New State",
+    zipcode: 123456,
+    country: "IN",
+    phone: "1234567890",
   },
 ];
 
@@ -200,8 +219,9 @@ export const features = [
   },
 ];
 
-export const dummyProducts = [
-  // Vegetables
+// Initial dummyProducts (with duplicates)
+let dummyProducts = [
+  // Dairy
   {
     _id: "ek60j91k",
     name: "Cheese Slice 200g",
@@ -345,153 +365,8 @@ export const dummyProducts = [
     createdAt: "2025-03-25T07:17:46.018Z",
     updatedAt: "2025-03-25T07:18:13.103Z",
     inStock: true
-  }
-,
-{
-  _id: "ek60j91k",
-  name: "Cheese Slice 200g",
-  category: "Dairy",
-  price: 95,
-  offerPrice: 90,
-  image: [cheese_image],
-  description: [
-    "Creamy and delicious",
-    "Perfect for sandwiches and burgers",
-    "High in calcium and protein"
-  ],
-  createdAt: "2025-03-25T07:17:46.018Z",
-  updatedAt: "2025-03-25T07:18:13.103Z",
-  inStock: true
-},
-{
-  _id: "ek61j92k",
-  name: "Wheat Flour 1kg",
-  category: "Grains",
-  price: 60,
-  offerPrice: 55,
-  image: [wheat_flour_image],
-  description: [
-    "Stone-ground",
-    "Perfect for chapatis and parathas",
-    "Rich in fiber"
-  ],
-  createdAt: "2025-03-25T07:17:46.018Z",
-  updatedAt: "2025-03-25T07:18:13.103Z",
-  inStock: true
-},
-{
-  _id: "ek62j93k",
-  name: "Brown Rice 1kg",
-  category: "Grains",
-  price: 75,
-  offerPrice: 70,
-  image: [brown_rice_image],
-  description: [
-    "Whole grain rice",
-    "High in fiber",
-    "Great for healthy meals"
-  ],
-  createdAt: "2025-03-25T07:17:46.018Z",
-  updatedAt: "2025-03-25T07:18:13.103Z",
-  inStock: true
-},
-{
-  _id: "ek63j94k",
-  name: "Butter Croissant",
-  category: "Bakery",
-  price: 45,
-  offerPrice: 40,
-  image: [butter_croissant_image],
-  description: [
-    "Flaky and buttery",
-    "Perfect for breakfast",
-    "Freshly baked"
-  ],
-  createdAt: "2025-03-25T07:17:46.018Z",
-  updatedAt: "2025-03-25T07:18:13.103Z",
-  inStock: true
-},
-{
-  _id: "ek64j95k",
-  name: "Chocolate Cake Slice",
-  category: "Bakery",
-  price: 60,
-  offerPrice: 55,
-  image: [chocolate_cake_image],
-  description: [
-    "Moist and rich",
-    "Made with real cocoa",
-    "Perfect dessert option"
-  ],
-  createdAt: "2025-03-25T07:17:46.018Z",
-  updatedAt: "2025-03-25T07:18:13.103Z",
-  inStock: true
-},
-{
-  _id: "ek65j96k",
-  name: "Yippee Noodles",
-  category: "Instant",
-  price: 20,
-  offerPrice: 18,
-  image: [yippee_image],
-  description: [
-    "Quick & tasty",
-    "Ready in 5 minutes",
-    "Kids' favorite"
-  ],
-  createdAt: "2025-03-25T07:17:46.018Z",
-  updatedAt: "2025-03-25T07:18:13.103Z",
-  inStock: true
-},
-{
-  _id: "ek66j97k",
-  name: "Sprite 500ml",
-  category: "Drinks",
-  price: 35,
-  offerPrice: 30,
-  image: [sprite_image_1],
-  description: [
-    "Refreshing lemon-lime drink",
-    "Chilled and fizzy",
-    "Perfect for summer"
-  ],
-  createdAt: "2025-03-25T07:17:46.018Z",
-  updatedAt: "2025-03-25T07:18:13.103Z",
-  inStock: true
-},
-{
-  _id: "ek67j98k",
-  name: "Fanta 500ml",
-  category: "Drinks",
-  price: 35,
-  offerPrice: 30,
-  image: [fanta_image_1],
-  description: [
-    "Orange flavored soda",
-    "Chilled and fizzy",
-    "Great for refreshment"
-  ],
-  createdAt: "2025-03-25T07:17:46.018Z",
-  updatedAt: "2025-03-25T07:18:13.103Z",
-  inStock: true
-},
-{
-  _id: "ek68j99k",
-  name: "Seven Up 500ml",
-  category: "Drinks",
-  price: 35,
-  offerPrice: 30,
-  image: [seven_up_image_1],
-  description: [
-    "Crisp and clear",
-    "Great taste, no caffeine",
-    "Perfect with snacks"
-  ],
-  createdAt: "2025-03-25T07:17:46.018Z",
-  updatedAt: "2025-03-25T07:18:13.103Z",
-  inStock: true
-}
-,
+  },
+  // Vegetables
   {
     _id: "gd46g23h",
     name: "Potato 500g",
@@ -573,7 +448,6 @@ export const dummyProducts = [
     updatedAt: "2025-03-25T07:18:13.103Z",
     inStock: true,
   },
-
   // Fruits
   {
     _id: "ek51j12k",
@@ -629,7 +503,6 @@ export const dummyProducts = [
     _id: "ek54j45k",
     name: "Mango 1 kg",
     category: "Fruits",
-
     price: 150,
     offerPrice: 140,
     image: [mango_image_1],
@@ -658,7 +531,6 @@ export const dummyProducts = [
     updatedAt: "2025-03-25T07:18:13.103Z",
     inStock: true,
   },
-
   // Dairy
   {
     _id: "ek56j67k",
@@ -741,7 +613,6 @@ export const dummyProducts = [
     updatedAt: "2025-03-25T07:18:13.103Z",
     inStock: true,
   },
-
   // Drinks
   {
     _id: "ek61j12k",
@@ -759,88 +630,7 @@ export const dummyProducts = [
     updatedAt: "2025-03-25T07:18:13.103Z",
     inStock: true,
   },
-  {
-    _id: "ek62j23k",
-    name: "Pepsi 1.5L",
-    category: "Drinks",
-    price: 78,
-    offerPrice: 73,
-    image: [pepsi_image],
-    description: [
-      "Chilled and refreshing",
-      "Perfect for celebrations",
-      "Best served cold",
-    ],
-    createdAt: "2025-03-25T07:17:46.018Z",
-    updatedAt: "2025-03-25T07:18:13.103Z",
-    inStock: true,
-  },
-  {
-    _id: "ek63j34k",
-    name: "Sprite 1.5L",
-    category: "Drinks",
-    price: 79,
-    offerPrice: 74,
-    image: [sprite_image_1],
-    description: [
-      "Refreshing citrus taste",
-      "Perfect for hot days",
-      "Best served chilled",
-    ],
-    createdAt: "2025-03-25T07:17:46.018Z",
-    updatedAt: "2025-03-25T07:18:13.103Z",
-    inStock: true,
-  },
-  {
-    _id: "ek64j45k",
-    name: "Fanta 1.5L",
-    category: "Drinks",
-    price: 77,
-    offerPrice: 72,
-    image: [fanta_image_1],
-    description: [
-      "Sweet and fizzy",
-      "Great for parties and gatherings",
-      "Best served cold",
-    ],
-    createdAt: "2025-03-25T07:17:46.018Z",
-    updatedAt: "2025-03-25T07:18:13.103Z",
-    inStock: true,
-  },
-  {
-    _id: "ek65j56k",
-    name: "7 Up 1.5L",
-    category: "Drinks",
-    price: 76,
-    offerPrice: 71,
-    image: [seven_up_image_1],
-    description: [
-      "Refreshing lemon-lime flavor",
-      "Perfect for refreshing",
-      "Best served chilled",
-    ],
-    createdAt: "2025-03-25T07:17:46.018Z",
-    updatedAt: "2025-03-25T07:18:13.103Z",
-    inStock: true,
-  },
-
   // Grains
-  {
-    _id: "ek66j67k",
-    name: "Basmati Rice 5kg",
-    category: "Grains",
-    price: 550,
-    offerPrice: 520,
-    image: [basmati_rice_image],
-    description: [
-      "Long grain and aromatic",
-      "Perfect for biryani and pulao",
-      "Premium quality",
-    ],
-    createdAt: "2025-03-25T07:17:46.018Z",
-    updatedAt: "2025-03-25T07:18:13.103Z",
-    inStock: true,
-  },
   {
     _id: "ek67j78k",
     name: "Wheat Flour 5kg",
@@ -852,22 +642,6 @@ export const dummyProducts = [
       "High-quality whole wheat",
       "Soft and fluffy rotis",
       "Rich in nutrients",
-    ],
-    createdAt: "2025-03-25T07:17:46.018Z",
-    updatedAt: "2025-03-25T07:18:13.103Z",
-    inStock: true,
-  },
-  {
-    _id: "ek68j89k",
-    name: "Organic Quinoa 500g",
-    category: "Grains",
-    price: 450,
-    offerPrice: 420,
-    image: [quinoa_image],
-    description: [
-      "High in protein and fiber",
-      "Gluten-free",
-      "Rich in vitamins and minerals",
     ],
     createdAt: "2025-03-25T07:17:46.018Z",
     updatedAt: "2025-03-25T07:18:13.103Z",
@@ -905,7 +679,6 @@ export const dummyProducts = [
     updatedAt: "2025-03-25T07:18:13.103Z",
     inStock: true,
   },
-
   // Bakery
   {
     _id: "bk01a24z",
@@ -972,183 +745,6 @@ export const dummyProducts = [
     inStock: true,
   },
   {
-    _id: "ek60j91k",
-    name: "Cheese Slice 200g",
-    category: "Dairy",
-    price: 95,
-    offerPrice: 90,
-    image: [cheese_image],
-    description: [
-      "Creamy and delicious",
-      "Perfect for sandwiches and burgers",
-      "High in calcium and protein"
-    ],
-    createdAt: "2025-03-25T07:17:46.018Z",
-    updatedAt: "2025-03-25T07:18:13.103Z",
-    inStock: true
-  },
-  {
-    _id: "ek61j92k",
-    name: "Wheat Flour 1kg",
-    category: "Grains",
-    price: 60,
-    offerPrice: 55,
-    image: [wheat_flour_image],
-    description: [
-      "Stone-ground",
-      "Perfect for chapatis and parathas",
-      "Rich in fiber"
-    ],
-    createdAt: "2025-03-25T07:17:46.018Z",
-    updatedAt: "2025-03-25T07:18:13.103Z",
-    inStock: true
-  },
-  {
-    _id: "ek62j93k",
-    name: "Brown Rice 1kg",
-    category: "Grains",
-    price: 75,
-    offerPrice: 70,
-    image: [brown_rice_image],
-    description: [
-      "Whole grain rice",
-      "High in fiber",
-      "Great for healthy meals"
-    ],
-    createdAt: "2025-03-25T07:17:46.018Z",
-    updatedAt: "2025-03-25T07:18:13.103Z",
-    inStock: true
-  },
-  {
-    _id: "in04i28r2222",
-    name: "Yippee Noodles 260g",
-    category: "Instant",
-    price: 50,
-    offerPrice: 45,
-    image: [yippee_image],
-    description: [
-      "Non-fried noodles for healthier choice",
-      "Tasty and filling",
-      "Convenient for busy schedules",
-    ],
-    createdAt: "2025-03-25T07:17:46.018Z",
-    updatedAt: "2025-03-25T07:18:13.103Z",
-    inStock: true,
-  },
-  {
-    _id: "in05j29q322",
-    name: "Oats Noodles 72g",
-    category: "Instant",
-    price: 40,
-    offerPrice: 35,
-    image: [maggi_oats_image],
-    description: [
-      "Healthy alternative with oats",
-      "Good for digestion",
-      "Perfect for breakfast or snacks",
-    ],
-    createdAt: "2025-03-25T07:17:46.018Z",
-    updatedAt: "2025-03-25T07:18:13.103Z",
-    inStock: true,
-  },
-  {
-    _id: "ek63j94k",
-    name: "Butter Croissant",
-    category: "Bakery",
-    price: 45,
-    offerPrice: 40,
-    image: [butter_croissant_image],
-    description: [
-      "Flaky and buttery",
-      "Perfect for breakfast",
-      "Freshly baked"
-    ],
-    createdAt: "2025-03-25T07:17:46.018Z",
-    updatedAt: "2025-03-25T07:18:13.103Z",
-    inStock: true
-  },
-  {
-    _id: "ek64j95k",
-    name: "Chocolate Cake Slice",
-    category: "Bakery",
-    price: 60,
-    offerPrice: 55,
-    image: [chocolate_cake_image],
-    description: [
-      "Moist and rich",
-      "Made with real cocoa",
-      "Perfect dessert option"
-    ],
-    createdAt: "2025-03-25T07:17:46.018Z",
-    updatedAt: "2025-03-25T07:18:13.103Z",
-    inStock: true
-  },
-  {
-    _id: "ek65j96k",
-    name: "Yippee Noodles",
-    category: "Instant",
-    price: 20,
-    offerPrice: 18,
-    image: [yippee_image],
-    description: [
-      "Quick & tasty",
-      "Ready in 5 minutes",
-      "Kids' favorite"
-    ],
-    createdAt: "2025-03-25T07:17:46.018Z",
-    updatedAt: "2025-03-25T07:18:13.103Z",
-    inStock: true
-  },
-  {
-    _id: "ek66j97k",
-    name: "Sprite 500ml",
-    category: "Drinks",
-    price: 35,
-    offerPrice: 30,
-    image: [sprite_image_1],
-    description: [
-      "Refreshing lemon-lime drink",
-      "Chilled and fizzy",
-      "Perfect for summer"
-    ],
-    createdAt: "2025-03-25T07:17:46.018Z",
-    updatedAt: "2025-03-25T07:18:13.103Z",
-    inStock: true
-  },
-  {
-    _id: "ek67j98k",
-    name: "Fanta 500ml",
-    category: "Drinks",
-    price: 35,
-    offerPrice: 30,
-    image: [fanta_image_1],
-    description: [
-      "Orange flavored soda",
-      "Chilled and fizzy",
-      "Great for refreshment"
-    ],
-    createdAt: "2025-03-25T07:17:46.018Z",
-    updatedAt: "2025-03-25T07:18:13.103Z",
-    inStock: true
-  },
-  {
-    _id: "ek68j99k",
-    name: "Seven Up 500ml",
-    category: "Drinks",
-    price: 35,
-    offerPrice: 30,
-    image: [seven_up_image_1],
-    description: [
-      "Crisp and clear",
-      "Great taste, no caffeine",
-      "Perfect with snacks"
-    ],
-    createdAt: "2025-03-25T07:17:46.018Z",
-    updatedAt: "2025-03-25T07:18:13.103Z",
-    inStock: true
-  }
-,  
-  {
     _id: "bk05e33v",
     name: "Vanilla Muffins 6 pcs",
     category: "Bakery",
@@ -1164,13 +760,11 @@ export const dummyProducts = [
     updatedAt: "2025-03-25T07:18:13.103Z",
     inStock: true,
   },
-
   // Instant
   {
     _id: "in01f25u",
     name: "Maggi Noodles 280g",
     category: "Instant",
-
     price: 55,
     offerPrice: 50,
     image: [maggi_image],
@@ -1199,327 +793,6 @@ export const dummyProducts = [
     updatedAt: "2025-03-25T07:18:13.103Z",
     inStock: true,
   },
-  {
-    _id: "ek60j91k",
-    name: "Cheese Slice 200g",
-    category: "Dairy",
-    price: 95,
-    offerPrice: 90,
-    image: [cheese_image],
-    description: [
-      "Creamy and delicious",
-      "Perfect for sandwiches and burgers",
-      "High in calcium and protein"
-    ],
-    createdAt: "2025-03-25T07:17:46.018Z",
-    updatedAt: "2025-03-25T07:18:13.103Z",
-    inStock: true
-  },
-  {
-    _id: "ek61j92k",
-    name: "Wheat Flour 1kg",
-    category: "Grains",
-    price: 60,
-    offerPrice: 55,
-    image: [wheat_flour_image],
-    description: [
-      "Stone-ground",
-      "Perfect for chapatis and parathas",
-      "Rich in fiber"
-    ],
-    createdAt: "2025-03-25T07:17:46.018Z",
-    updatedAt: "2025-03-25T07:18:13.103Z",
-    inStock: true
-  },
-  {
-    _id: "ek62j93k",
-    name: "Brown Rice 1kg",
-    category: "Grains",
-    price: 75,
-    offerPrice: 70,
-    image: [brown_rice_image],
-    description: [
-      "Whole grain rice",
-      "High in fiber",
-      "Great for healthy meals"
-    ],
-    createdAt: "2025-03-25T07:17:46.018Z",
-    updatedAt: "2025-03-25T07:18:13.103Z",
-    inStock: true
-  },
-  {
-    _id: "in04i28r2222",
-    name: "Yippee Noodles 260g",
-    category: "Instant",
-    price: 50,
-    offerPrice: 45,
-    image: [yippee_image],
-    description: [
-      "Non-fried noodles for healthier choice",
-      "Tasty and filling",
-      "Convenient for busy schedules",
-    ],
-    createdAt: "2025-03-25T07:17:46.018Z",
-    updatedAt: "2025-03-25T07:18:13.103Z",
-    inStock: true,
-  },
-  {
-    _id: "in05j29q322",
-    name: "Oats Noodles 72g",
-    category: "Instant",
-    price: 40,
-    offerPrice: 35,
-    image: [maggi_oats_image],
-    description: [
-      "Healthy alternative with oats",
-      "Good for digestion",
-      "Perfect for breakfast or snacks",
-    ],
-    createdAt: "2025-03-25T07:17:46.018Z",
-    updatedAt: "2025-03-25T07:18:13.103Z",
-    inStock: true,
-  },
-  {
-    _id: "ek63j94k",
-    name: "Butter Croissant",
-    category: "Bakery",
-    price: 45,
-    offerPrice: 40,
-    image: [butter_croissant_image],
-    description: [
-      "Flaky and buttery",
-      "Perfect for breakfast",
-      "Freshly baked"
-    ],
-    createdAt: "2025-03-25T07:17:46.018Z",
-    updatedAt: "2025-03-25T07:18:13.103Z",
-    inStock: true
-  },
-  {
-    _id: "ek64j95k",
-    name: "Chocolate Cake Slice",
-    category: "Bakery",
-    price: 60,
-    offerPrice: 55,
-    image: [chocolate_cake_image],
-    description: [
-      "Moist and rich",
-      "Made with real cocoa",
-      "Perfect dessert option"
-    ],
-    createdAt: "2025-03-25T07:17:46.018Z",
-    updatedAt: "2025-03-25T07:18:13.103Z",
-    inStock: true
-  },
-  {
-    _id: "ek65j96k",
-    name: "Yippee Noodles",
-    category: "Instant",
-    price: 20,
-    offerPrice: 18,
-    image: [yippee_image],
-    description: [
-      "Quick & tasty",
-      "Ready in 5 minutes",
-      "Kids' favorite"
-    ],
-    createdAt: "2025-03-25T07:17:46.018Z",
-    updatedAt: "2025-03-25T07:18:13.103Z",
-    inStock: true
-  },
-  {
-    _id: "ek66j97k",
-    name: "Sprite 500ml",
-    category: "Drinks",
-    price: 35,
-    offerPrice: 30,
-    image: [sprite_image_1],
-    description: [
-      "Refreshing lemon-lime drink",
-      "Chilled and fizzy",
-      "Perfect for summer"
-    ],
-    createdAt: "2025-03-25T07:17:46.018Z",
-    updatedAt: "2025-03-25T07:18:13.103Z",
-    inStock: true
-  },
-  {
-    _id: "ek67j98k",
-    name: "Fanta 500ml",
-    category: "Drinks",
-    price: 35,
-    offerPrice: 30,
-    image: [fanta_image_1],
-    description: [
-      "Orange flavored soda",
-      "Chilled and fizzy",
-      "Great for refreshment"
-    ],
-    createdAt: "2025-03-25T07:17:46.018Z",
-    updatedAt: "2025-03-25T07:18:13.103Z",
-    inStock: true
-  },
-  {
-    _id: "ek68j99k",
-    name: "Seven Up 500ml",
-    category: "Drinks",
-    price: 35,
-    offerPrice: 30,
-    image: [seven_up_image_1],
-    description: [
-      "Crisp and clear",
-      "Great taste, no caffeine",
-      "Perfect with snacks"
-    ],
-    createdAt: "2025-03-25T07:17:46.018Z",
-    updatedAt: "2025-03-25T07:18:13.103Z",
-    inStock: true
-  }
-,{
-  _id: "ek60j91k",
-  name: "Cheese Slice 200g",
-  category: "Dairy",
-  price: 95,
-  offerPrice: 90,
-  image: [cheese_image],
-  description: [
-    "Creamy and delicious",
-    "Perfect for sandwiches and burgers",
-    "High in calcium and protein"
-  ],
-  createdAt: "2025-03-25T07:17:46.018Z",
-  updatedAt: "2025-03-25T07:18:13.103Z",
-  inStock: true
-},
-{
-  _id: "ek61j92k",
-  name: "Wheat Flour 1kg",
-  category: "Grains",
-  price: 60,
-  offerPrice: 55,
-  image: [wheat_flour_image],
-  description: [
-    "Stone-ground",
-    "Perfect for chapatis and parathas",
-    "Rich in fiber"
-  ],
-  createdAt: "2025-03-25T07:17:46.018Z",
-  updatedAt: "2025-03-25T07:18:13.103Z",
-  inStock: true
-},
-{
-  _id: "ek62j93k",
-  name: "Brown Rice 1kg",
-  category: "Grains",
-  price: 75,
-  offerPrice: 70,
-  image: [brown_rice_image],
-  description: [
-    "Whole grain rice",
-    "High in fiber",
-    "Great for healthy meals"
-  ],
-  createdAt: "2025-03-25T07:17:46.018Z",
-  updatedAt: "2025-03-25T07:18:13.103Z",
-  inStock: true
-},
-{
-  _id: "ek63j94k",
-  name: "Butter Croissant",
-  category: "Bakery",
-  price: 45,
-  offerPrice: 40,
-  image: [butter_croissant_image],
-  description: [
-    "Flaky and buttery",
-    "Perfect for breakfast",
-    "Freshly baked"
-  ],
-  createdAt: "2025-03-25T07:17:46.018Z",
-  updatedAt: "2025-03-25T07:18:13.103Z",
-  inStock: true
-},
-{
-  _id: "ek64j95k",
-  name: "Chocolate Cake Slice",
-  category: "Bakery",
-  price: 60,
-  offerPrice: 55,
-  image: [chocolate_cake_image],
-  description: [
-    "Moist and rich",
-    "Made with real cocoa",
-    "Perfect dessert option"
-  ],
-  createdAt: "2025-03-25T07:17:46.018Z",
-  updatedAt: "2025-03-25T07:18:13.103Z",
-  inStock: true
-},
-{
-  _id: "ek65j96k",
-  name: "Yippee Noodles",
-  category: "Instant",
-  price: 20,
-  offerPrice: 18,
-  image: [yippee_image],
-  description: [
-    "Quick & tasty",
-    "Ready in 5 minutes",
-    "Kids' favorite"
-  ],
-  createdAt: "2025-03-25T07:17:46.018Z",
-  updatedAt: "2025-03-25T07:18:13.103Z",
-  inStock: true
-},
-{
-  _id: "ek66j97k",
-  name: "Sprite 500ml",
-  category: "Drinks",
-  price: 35,
-  offerPrice: 30,
-  image: [sprite_image_1],
-  description: [
-    "Refreshing lemon-lime drink",
-    "Chilled and fizzy",
-    "Perfect for summer"
-  ],
-  createdAt: "2025-03-25T07:17:46.018Z",
-  updatedAt: "2025-03-25T07:18:13.103Z",
-  inStock: true
-},
-{
-  _id: "ek67j98k",
-  name: "Fanta 500ml",
-  category: "Drinks",
-  price: 35,
-  offerPrice: 30,
-  image: [fanta_image_1],
-  description: [
-    "Orange flavored soda",
-    "Chilled and fizzy",
-    "Great for refreshment"
-  ],
-  createdAt: "2025-03-25T07:17:46.018Z",
-  updatedAt: "2025-03-25T07:18:13.103Z",
-  inStock: true
-},
-{
-  _id: "ek68j99k",
-  name: "Seven Up 500ml",
-  category: "Drinks",
-  price: 35,
-  offerPrice: 30,
-  image: [seven_up_image_1],
-  description: [
-    "Crisp and clear",
-    "Great taste, no caffeine",
-    "Perfect with snacks"
-  ],
-  createdAt: "2025-03-25T07:17:46.018Z",
-  updatedAt: "2025-03-25T07:18:13.103Z",
-  inStock: true
-}
-,  
   {
     _id: "in03h27s222",
     name: "Knorr Cup Soup 70g",
@@ -1570,23 +843,8 @@ export const dummyProducts = [
   },
 ];
 
-export const dummyAddress = [
-  {
-    _id: "67b5b9e54ea97f71bbc196a0",
-    userId: "67b5880e4d09769c5ca61644",
-    firstName: "Great",
-    lastName: "Stack",
-    email: "user.greatstack@gmail.com",
-    street: "Street 123",
-    city: "Main City",
-    state: "New State",
-    zipcode: 123456,
-    country: "IN",
-    phone: "1234567890",
-  },
-];
-
-export const dummyOrders = [
+// Initial dummyOrders (with misplaced products)
+let dummyOrders = [
   {
     _id: "67e2589a8f87e63366786400",
     userId: "67b5880e4d09769c5ca61644",
@@ -1772,150 +1030,26 @@ export const dummyOrders = [
     updatedAt: "2025-03-25T07:18:13.103Z",
     inStock: true
   }
-,
-{
-  _id: "ek60j91k",
-  name: "Cheese Slice 200g",
-  category: "Dairy",
-  price: 95,
-  offerPrice: 90,
-  image: [cheese_image],
-  description: [
-    "Creamy and delicious",
-    "Perfect for sandwiches and burgers",
-    "High in calcium and protein"
-  ],
-  createdAt: "2025-03-25T07:17:46.018Z",
-  updatedAt: "2025-03-25T07:18:13.103Z",
-  inStock: true
-},
-{
-  _id: "ek61j92k",
-  name: "Wheat Flour 1kg",
-  category: "Grains",
-  price: 60,
-  offerPrice: 55,
-  image: [wheat_flour_image],
-  description: [
-    "Stone-ground",
-    "Perfect for chapatis and parathas",
-    "Rich in fiber"
-  ],
-  createdAt: "2025-03-25T07:17:46.018Z",
-  updatedAt: "2025-03-25T07:18:13.103Z",
-  inStock: true
-},
-{
-  _id: "ek62j93k",
-  name: "Brown Rice 1kg",
-  category: "Grains",
-  price: 75,
-  offerPrice: 70,
-  image: [brown_rice_image],
-  description: [
-    "Whole grain rice",
-    "High in fiber",
-    "Great for healthy meals"
-  ],
-  createdAt: "2025-03-25T07:17:46.018Z",
-  updatedAt: "2025-03-25T07:18:13.103Z",
-  inStock: true
-},
-{
-  _id: "ek63j94k",
-  name: "Butter Croissant",
-  category: "Bakery",
-  price: 45,
-  offerPrice: 40,
-  image: [butter_croissant_image],
-  description: [
-    "Flaky and buttery",
-    "Perfect for breakfast",
-    "Freshly baked"
-  ],
-  createdAt: "2025-03-25T07:17:46.018Z",
-  updatedAt: "2025-03-25T07:18:13.103Z",
-  inStock: true
-},
-{
-  _id: "ek64j95k",
-  name: "Chocolate Cake Slice",
-  category: "Bakery",
-  price: 60,
-  offerPrice: 55,
-  image: [chocolate_cake_image],
-  description: [
-    "Moist and rich",
-    "Made with real cocoa",
-    "Perfect dessert option"
-  ],
-  createdAt: "2025-03-25T07:17:46.018Z",
-  updatedAt: "2025-03-25T07:18:13.103Z",
-  inStock: true
-},
-{
-  _id: "ek65j96k",
-  name: "Yippee Noodles",
-  category: "Instant",
-  price: 20,
-  offerPrice: 18,
-  image: [yippee_image],
-  description: [
-    "Quick & tasty",
-    "Ready in 5 minutes",
-    "Kids' favorite"
-  ],
-  createdAt: "2025-03-25T07:17:46.018Z",
-  updatedAt: "2025-03-25T07:18:13.103Z",
-  inStock: true
-},
-{
-  _id: "ek66j97k",
-  name: "Sprite 500ml",
-  category: "Drinks",
-  price: 35,
-  offerPrice: 30,
-  image: [sprite_image_1],
-  description: [
-    "Refreshing lemon-lime drink",
-    "Chilled and fizzy",
-    "Perfect for summer"
-  ],
-  createdAt: "2025-03-25T07:17:46.018Z",
-  updatedAt: "2025-03-25T07:18:13.103Z",
-  inStock: true
-},
-{
-  _id: "ek67j98k",
-  name: "Fanta 500ml",
-  category: "Drinks",
-  price: 35,
-  offerPrice: 30,
-  image: [fanta_image_1],
-  description: [
-    "Orange flavored soda",
-    "Chilled and fizzy",
-    "Great for refreshment"
-  ],
-  createdAt: "2025-03-25T07:17:46.018Z",
-  updatedAt: "2025-03-25T07:18:13.103Z",
-  inStock: true
-},
-{
-  _id: "ek68j99k",
-  name: "Seven Up 500ml",
-  category: "Drinks",
-  price: 35,
-  offerPrice: 30,
-  image: [seven_up_image_1],
-  description: [
-    "Crisp and clear",
-    "Great taste, no caffeine",
-    "Perfect with snacks"
-  ],
-  createdAt: "2025-03-25T07:17:46.018Z",
-  updatedAt: "2025-03-25T07:18:13.103Z",
-  inStock: true
-}
-
 ];
+
+
+// Deduplicate dummyProducts and fix dummyOrders
+const allProducts = [
+  ...dummyProducts,
+  ...dummyOrders.filter(item => item.name && item.category), // Filter product-like entries from dummyOrders
+];
+
+// Remove duplicates based on _id
+const uniqueProductsMap = new Map();
+allProducts.forEach(product => {
+  if (!uniqueProductsMap.has(product._id)) {
+    uniqueProductsMap.set(product._id, product);
+  }
+});
+dummyProducts = Array.from(uniqueProductsMap.values());
+
+// Correct dummyOrders to only include actual orders
+dummyOrders = dummyOrders.filter(item => item.items && item.amount);
+
+// Export the cleaned data
+export { dummyProducts, dummyOrders };

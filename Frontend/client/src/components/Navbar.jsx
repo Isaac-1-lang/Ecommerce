@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { NavLink } from "react-router-dom";
 import { assets } from "../assets/images/greencart_assets/assets";
 import { useAppContext } from "../context/AppContext";
+import { useSelector } from "react-redux"; // Import useSelector to access Redux state
 
 const Navbar = () => {
   const [open, setOpen] = useState(false); // For mobile menu
@@ -15,6 +16,10 @@ const Navbar = () => {
     searchQuery,
     cartItems,
   } = useAppContext();
+
+  // Get favorites from Redux state
+  const favourites = useSelector((state) => state.wishlist.favourites);
+  const favouritesCount = favourites.length; // Calculate favorites count
 
   const profileRef = useRef(null);
 
@@ -57,7 +62,8 @@ const Navbar = () => {
     }`;
 
   // Shared style for menu items
-  const menuItemStyle = "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors duration-200";
+  const menuItemStyle =
+    "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors duration-200";
 
   // Profile menu items
   const ProfileMenu = () => (
@@ -137,6 +143,20 @@ const Navbar = () => {
             value={searchQuery} // Controlled input
           />
         </div>
+
+        {/* Favorites */}
+        <NavLink to="/favourite" className="relative">
+          <img
+            src={assets.favourite_icon} // Use a heart icon from assets if available
+            alt="Favorites"
+            className="w-6 h-6"
+          />
+          {favouritesCount > 0 && (
+            <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+              {favouritesCount}
+            </span>
+          )}
+        </NavLink>
 
         {/* Cart */}
         <NavLink to="/cart" className="relative">
@@ -220,11 +240,18 @@ const Navbar = () => {
             Contact
           </NavLink>
           <NavLink
+            to="/favourite"
+            className={navLinkStyle}
+            onClick={() => setOpen(false)}
+          >
+            Favorites ({favouritesCount})
+          </NavLink>
+          <NavLink
             to="/cart"
             className={navLinkStyle}
             onClick={() => setOpen(false)}
           >
-            Cart
+            Cart ({cartItemCount})
           </NavLink>
 
           {/* Mobile Search */}
