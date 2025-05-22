@@ -1,18 +1,14 @@
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.jsx'
-import { BrowserRouter } from 'react-router-dom'
-import { AppContext, AppContextProvider } from './context/AppContext.jsx';
-import { Provider } from 'react-redux';
-import { store } from './redux/store.js';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { RouterProvider } from "react-router-dom";
+import router from "./router.jsx";
+import store from "./redux/store";
+import { Provider } from "react-redux";
+import { AppContextProvider } from "./context/AppContext";
+import "./index.css";
 
-createRoot(document.getElementById('root')).render(
-  <Provider store={store}>
-  <BrowserRouter>
-  <AppContextProvider>
-    <App />
-  </AppContextProvider>
-  </BrowserRouter>
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <Provider store={store}>   {/* Wrap the RouterProvider with AppContextProvider  here is redux*/}
+    <RouterProvider router={router} />
   </Provider>
-)
-// This is a file for setting up the routers for the website
+);
