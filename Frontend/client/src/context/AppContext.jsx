@@ -2,6 +2,7 @@ import { createContext, useState, useContext, useEffect, useCallback, useMemo } 
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { dummyProducts } from "../assets/images/greencart_assets/assets";
+import { API_URL } from "../config";
 import toast from "react-hot-toast";
 
 // Create context with a default value to avoid undefined issues
@@ -26,6 +27,8 @@ export const AppContext = createContext({
   cartItems: {},
   searchQuery: "",
   setSearchQuery: () => {},
+  sessionTimeLeft: 0,
+  isSessionActive: false,
 });
 
 // Custom hook to use the context
@@ -52,6 +55,26 @@ export const AppContextProvider = ({ children }) => {
     return savedCart ? JSON.parse(savedCart) : {};
   });
   const [searchQuery, setSearchQuery] = useState("");
+  const [sessionTimeLeft, setSessionTimeLeft] = useState(0);
+  const [isSessionActive, setIsSessionActive] = useState(false);
+
+  // Session timer effect
+  useEffect(() => {
+    let timer;
+    if (isSessionActive && sessionTimeLeft > 0) {
+      timer = setInterval(() => {
+        setSessionTimeLeft(prev => {
+          if (prev <= 1) {
+            setIsSessionActive(false);
+            logout();
+            return 0;
+          }
+          return prev - 1;
+        });
+      }, 1000);
+    }
+    return () => clearInterval(timer);
+  }, [isSessionActive, sessionTimeLeft]);
 
   // Save cartItems and token to localStorage whenever they change
   useEffect(() => {
@@ -80,16 +103,25 @@ export const AppContextProvider = ({ children }) => {
   // Login function
   const login = async (email, password) => {
     try {
-      const response = await axios.post('http://localhost:5000/api/login', {
+      const response = await axios.post(`${API_URL}/api/auth/login`, {
         email,
         password,
       });
-      const { token, role } = response.data;
+      const { token, role, user: userData } = response.data;
       setToken(token);
-      setUser({ email });
-      setRole(role); // Assuming backend returns role
+      setUser(userData || { email });
+      setRole(role);
+      setSessionTimeLeft(120);
+      setIsSessionActive(true);
       toast.success("Login successful!");
-      navigate(role === 'seller' ? '/seller' : '/'); // Redirect based on role
+      
+      if (role === 'admin') {
+        navigate('/admin/dashboard');
+      } else if (role === 'seller') {
+        navigate('/seller');
+      } else {
+        navigate('/');
+      }
     } catch (error) {
       console.error('Login error:', error);
       toast.error(error.response?.data?.error || "Login failed. Please try again.");
@@ -103,6 +135,8 @@ export const AppContextProvider = ({ children }) => {
     setRole(null);
     setToken(null);
     setCartItems({}); // Optional: Clear cart on logout
+    setSessionTimeLeft(0);
+    setIsSessionActive(false);
     toast.success("Logged out successfully!");
     navigate('/login');
   }, [navigate]);
@@ -222,6 +256,8 @@ export const AppContextProvider = ({ children }) => {
       cartItems,
       searchQuery,
       setSearchQuery,
+      sessionTimeLeft,
+      isSessionActive,
     }),
     [
       navigate,
@@ -240,6 +276,8 @@ export const AppContextProvider = ({ children }) => {
       getCartAmount,
       login,
       logout,
+      sessionTimeLeft,
+      isSessionActive,
     ]
   );
 

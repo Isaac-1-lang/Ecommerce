@@ -19,6 +19,7 @@ import MyOrders from "./pages/MyOrders";
 import Checkout from "./pages/Checkout";
 import Dashboard from "./pages/admin/Dashboard";
 import Favourite from "./components/Favourite";
+import SessionTimer from "./components/SessionTimer";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -42,6 +43,7 @@ function App() {
       <div>
         {isSellerPath ? null : <Navbar />}
         <Toaster />
+        <SessionTimer />
         <div className={`${isSellerPath ? "" : "px-6 md:px-16 lg:px-24 xl:px-32"}`}>
           <Outlet>
             <Route path="/" element={<Home />} />

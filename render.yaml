@@ -1,0 +1,28 @@
+services:
+  # Backend service
+  - type: web
+    name: greencart-backend
+    env: node
+    buildCommand: cd Backend && npm install
+    startCommand: cd Backend && npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MONGODB_URI
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: PORT
+        value: 5000
+
+  # Frontend service
+  - type: web
+    name: greencart-frontend
+    env: static
+    buildCommand: cd Frontend/client && npm install && npm run build
+    staticPublishPath: Frontend/client/dist
+    envVars:
+      - key: VITE_API_URL
+        value: https://greencart-backend.onrender.com
+      - key: VITE_CURRENCY
+        value: $ 

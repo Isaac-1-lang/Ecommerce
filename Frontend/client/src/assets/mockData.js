@@ -1,0 +1,72 @@
+export const mockProducts = [
+  {
+    _id: '1',
+    name: 'Organic Apples',
+    description: 'Fresh organic apples from local farms',
+    price: 4.99,
+    offerPrice: 3.99,
+    category: 'fruits',
+    stock: 100,
+    image: ['https://images.unsplash.com/photo-1568702846914-96b305d2aaeb?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YXBwbGV8ZW58MHx8MHx8fDA%3D'],
+    isBestSeller: true,
+    isNewArrival: false,
+    isOnSale: true,
+    discountPercentage: '20'
+  },
+  {
+    _id: '2',
+    name: 'Fresh Spinach',
+    description: 'Organic spinach leaves, perfect for salads',
+    price: 3.99,
+    offerPrice: 2.99,
+    category: 'vegetables',
+    stock: 75,
+    image: ['https://images.unsplash.com/photo-1576045057995-568f588f82fb?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c3BpbmFjaHxlbnwwfHwwfHx8MA%3D%3D'],
+    isBestSeller: false,
+    isNewArrival: true,
+    isOnSale: false,
+    discountPercentage: '0'
+  },
+  {
+    _id: '3',
+    name: 'Whole Milk',
+    description: 'Fresh whole milk from grass-fed cows',
+    price: 4.49,
+    offerPrice: 3.99,
+    category: 'dairy',
+    stock: 50,
+    image: ['https://images.unsplash.com/photo-1563636619-e9143da7973b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bWlsa3xlbnwwfHwwfHx8MA%3D%3D'],
+    isBestSeller: true,
+    isNewArrival: false,
+    isOnSale: true,
+    discountPercentage: '15'
+  },
+  {
+    _id: '4',
+    name: 'Chicken Breast',
+    description: 'Fresh boneless chicken breast',
+    price: 8.99,
+    offerPrice: 7.99,
+    category: 'meat',
+    stock: 30,
+    image: ['https://images.unsplash.com/photo-1604503468506-a8da13d82791?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2hpY2tlbiUyMGJyZWFzdHxlbnwwfHwwfHx8MA%3D%3D'],
+    isBestSeller: false,
+    isNewArrival: true,
+    isOnSale: false,
+    discountPercentage: '0'
+  },
+  {
+    _id: '5',
+    name: 'Sourdough Bread',
+    description: 'Artisanal sourdough bread, freshly baked',
+    price: 5.99,
+    offerPrice: 4.99,
+    category: 'bakery',
+    stock: 25,
+    image: ['https://images.unsplash.com/photo-1568702846914-96b305d2aaeb?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YXBwbGV8ZW58MHx8MHx8fDA%3D'],
+    isBestSeller: true,
+    isNewArrival: false,
+    isOnSale: true,
+    discountPercentage: '20'
+  }
+]; 

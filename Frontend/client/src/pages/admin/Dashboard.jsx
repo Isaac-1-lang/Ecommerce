@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppContext } from '../../context/AppContext';
+import { mockProducts } from '../../assets/mockData';
 import toast from 'react-hot-toast';
 
 const Dashboard = () => {
-  const { user } = useAppContext();
+  const { user, role } = useAppContext();
   const navigate = useNavigate();
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -32,17 +33,17 @@ const Dashboard = () => {
 
   // Check if user is admin
   useEffect(() => {
-    if (!user || user.role !== 'admin') {
+    if (!user || role !== 'admin') {
       navigate('/');
       toast.error('Access denied. Admin only.');
     }
-  }, [user, navigate]);
+  }, [user, role, navigate]);
 
   const fetchProducts = async () => {
     try {
-      const response = await fetch('/api/products');
-      const data = await response.json();
-      setProducts(data.products);
+      // Simulate API call delay
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      setProducts(mockProducts);
       setLoading(false);
     } catch (error) {
       console.error('Error fetching products:', error);
@@ -66,37 +67,32 @@ const Dashboard = () => {
     setLoading(true);
 
     try {
-      const formDataToSend = new FormData();
-      Object.keys(formData).forEach(key => {
-        if (key === 'images') {
-          formData.images.forEach(image => {
-            formDataToSend.append('images', image);
-          });
-        } else {
-          formDataToSend.append(key, formData[key]);
-        }
-      });
+      // Simulate API call delay
+      await new Promise(resolve => setTimeout(resolve, 1000));
 
-      const url = selectedProduct ? 
-        `/api/products/${selectedProduct._id}` : 
-        '/api/products';
-      
-      const method = selectedProduct ? 'PUT' : 'POST';
-
-      const response = await fetch(url, {
-        method,
-        body: formDataToSend,
-        headers: {
-          'Authorization': `Bearer ${localStorage.getItem('token')}`
-        }
-      });
-
-      if (!response.ok) {
-        throw new Error('Failed to save product');
+      if (selectedProduct) {
+        // Update existing product
+        setProducts(prevProducts => 
+          prevProducts.map(product => 
+            product._id === selectedProduct._id 
+              ? { ...product, ...formData }
+              : product
+          )
+        );
+        toast.success('Product updated successfully');
+      } else {
+        // Add new product
+        const newProduct = {
+          _id: String(products.length + 1),
+          ...formData,
+          image: formData.images.length > 0 
+            ? [URL.createObjectURL(formData.images[0])]
+            : ['https://via.placeholder.com/150']
+        };
+        setProducts(prevProducts => [...prevProducts, newProduct]);
+        toast.success('Product added successfully');
       }
 
-      toast.success(selectedProduct ? 'Product updated successfully' : 'Product added successfully');
-      fetchProducts();
       setShowAddModal(false);
       setShowEditModal(false);
       setSelectedProduct(null);
@@ -115,19 +111,13 @@ const Dashboard = () => {
     }
 
     try {
-      const response = await fetch(`/api/products/${productId}`, {
-        method: 'DELETE',
-        headers: {
-          'Authorization': `Bearer ${localStorage.getItem('token')}`
-        }
-      });
-
-      if (!response.ok) {
-        throw new Error('Failed to delete product');
-      }
-
+      // Simulate API call delay
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      setProducts(prevProducts => 
+        prevProducts.filter(product => product._id !== productId)
+      );
       toast.success('Product deleted successfully');
-      fetchProducts();
     } catch (error) {
       console.error('Error deleting product:', error);
       toast.error('Failed to delete product');

@@ -42,7 +42,7 @@ const Login = () => {
     try {
       await login(formData.email, formData.password);
       setShowUserLogin(false); // Hide login modal if used as a modal
-      navigate('/'); // Default redirect; adjust based on role if needed
+      // The navigation will be handled by the login function in AppContext
     } catch (error) {
       setErrors({ form: error.message || "Login failed. Please try again." });
     } finally {
